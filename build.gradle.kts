@@ -7,6 +7,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        // أضف هذا السطر تحديداً، هو المفتاح لحل مشكلة "Could not resolve"
+        maven { url = uri("https://maven.pkg.github.com/recloudstream/gradle") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.13.1")
@@ -14,6 +16,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
     }
 }
+
 
 allprojects {
     repositories {
