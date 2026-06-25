@@ -7,23 +7,25 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // أضف هذا السطر تحديداً، هو المفتاح لحل مشكلة "Could not resolve"
-        maven { url = uri("https://maven.pkg.github.com/recloudstream/gradle") }
+        // هذا الرابط هو "المفتاح" الذي يلتف على مشاكل الـ 401 والـ Timeout
+        maven { url = uri("https://mw9.recloudstream.workers.dev/https://jitpack.io") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:8.13.1")
-        classpath("com.lagradost:cloudstream3-gradle-plugin:1.0.0")
+        // تغيير بسيط هنا لاستخدام إصدار يتوافق مع الجيت باك
+        classpath("com.github.recloudstream.gradle:gradle:master-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
     }
 }
-
 
 allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://mw9.recloudstream.workers.dev/https://jitpack.io") }
     }
 }
+
 
 fun Project.cloudstream(configuration: CloudstreamExtension.() -> Unit) = extensions.getByName<CloudstreamExtension>("cloudstream").configuration()
 fun Project.android(configuration: BaseExtension.() -> Unit) = extensions.getByName<BaseExtension>("android").configuration()
